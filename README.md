@@ -96,3 +96,13 @@ A solução aplica técnicas de **pré-processamento, análise exploratória de 
 - Implementar um **pipeline automatizado** para deploy em ambiente de produção (ex.: Flask, FastAPI).  
 
 ---
+## 📊 Resultados e Análises
+
+### Matriz de Confusão
+![Matriz de Confusão](img/matriz_confusao.png)
+
+### Importância das Features
+![Importância das Features](img/feature_importance.png)
+
+### Curva ROC
+![Curva ROC](img/curva_roc.png)
