@@ -96,13 +96,98 @@ A solução aplica técnicas de **pré-processamento, análise exploratória de 
 - Implementar um **pipeline automatizado** para deploy em ambiente de produção (ex.: Flask, FastAPI).  
 
 ---
-## 📊 Resultados e Análises
+## 📊 Análise Exploratória dos Dados
 
-### Matriz de Confusão
-![Matriz de Confusão](img/matriz_confusao.png)
+- **Tamanho do dataset**: 35.260 amostras e 15 colunas  
+- **Valores nulos**: presentes em variáveis numéricas (`temperatura_ar`, `torque`, `desgaste_da_ferramenta`)  
+- **Classes desbalanceadas**: algumas falhas representam **menos de 1% dos dados**  
+- **Outliers** detectados em variáveis de temperatura, velocidade rotacional e torque  
 
-### Importância das Features
-![Importância das Features](img/feature_importance.png)
+### Distribuição das Features Numéricas
+![Distribuição das Variáveis](imagens/distribuicao_variaveis.png)
 
-### Curva ROC
-![Curva ROC](img/curva_roc.png)
+### Correlação entre Variáveis
+![Matriz de Correlação](imagens/matriz_correlacao.png)
+
+### Desbalanceamento das Classes
+![Desbalanceamento](imagens/desbalanceamento_classes.png)
+
+- FDF: 0.20% positivos  
+- FDC: 0.63% positivos  
+- FP: 0.36% positivos  
+- FTE: 0.48% positivos  
+- FA: 0.21% positivos  
+
+👉 **Conclusão inicial**: dataset altamente desbalanceado → risco de modelos com alta acurácia mas baixo recall para falhas.
+
+---
+
+## ⚙️ Pré-processamento
+
+1. Limpeza de inconsistências (`sim`, `não`, `0`, `1`, `y`, etc.)  
+2. Imputação de valores nulos → **mediana** para numéricos  
+3. Normalização com **StandardScaler**  
+4. Codificação da variável categórica `tipo`  
+5. Divisão em **treino (80%)** e **teste (20%)**  
+
+---
+
+## 🤖 Modelos Avaliados
+
+Foram avaliados os seguintes classificadores em **configuração MultiOutput**:
+
+- 🌲 Random Forest  
+- 🌐 Gradient Boosting  
+- ⚡ XGBoost  
+- 🔥 LightGBM  
+- 🐱 CatBoost  
+
+---
+
+## 📈 Resultados
+
+### Random Forest
+- Acurácia Média: **0.9966**  
+- Precisão Média: **0.4305**  
+- Recall Médio: **0.1671**  
+- F1-Score Médio: **0.2318**
+
+### Gradient Boosting
+- Acurácia Média: **0.9963**  
+- Precisão Média: **0.3810**  
+- Recall Médio: **0.1785**  
+- F1-Score Médio: **0.2423**
+
+### XGBoost
+- Acurácia Média: **0.9966**  
+- Precisão Média: **0.5097**  
+- Recall Médio: **0.1968**  
+- F1-Score Médio: **0.2722**
+
+### LightGBM
+- Acurácia Média: **0.9963**  
+- Resultados similares ao XGBoost, mas com menor recall em algumas classes  
+
+### CatBoost
+- [Resultados ainda em execução ou a incluir aqui]  
+
+---
+
+## 📊 Comparação entre Modelos
+| Modelo            | Acurácia Média | Precisão Média | Recall Médio | F1-Score Médio |
+|-------------------|----------------|----------------|--------------|----------------|
+| Random Forest     | 0.9966         | 0.4305         | 0.1671       | 0.2318         |
+| Gradient Boosting | 0.9963         | 0.3810         | 0.1785       | 0.2423         |
+| XGBoost           | 0.9966         | 0.5097         | 0.1968       | 0.2722         |
+| LightGBM          | 0.9963         | ~0.45          | ~0.18        | ~0.25          |
+| CatBoost          | —              | —              | —            | —              |
+
+---
+
+## 📌 Conclusões
+- Apesar da **alta acurácia**, os modelos apresentaram **baixo recall e F1-score** devido ao **forte desbalanceamento das classes**.  
+- **XGBoost** teve o melhor equilíbrio entre precisão e recall.  
+- Recomenda-se aplicar técnicas de **oversampling (SMOTE)** ou **undersampling** para melhorar o desempenho nas classes minoritárias.  
+- Futuras otimizações podem incluir **ajuste de hiperparâmetros via GridSearchCV** e uso de **métricas ponderadas**.
+
+---
