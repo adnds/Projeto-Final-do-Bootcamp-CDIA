@@ -190,4 +190,5 @@ Foram avaliados os seguintes classificadores em **configuração MultiOutput**:
 - Recomenda-se aplicar técnicas de **oversampling (SMOTE)** ou **undersampling** para melhorar o desempenho nas classes minoritárias.  
 - Futuras otimizações podem incluir **ajuste de hiperparâmetros via GridSearchCV** e uso de **métricas ponderadas**.
 
+✍️ Autor: Adilson | Projeto Final Bootcamp CDIA
 ---
