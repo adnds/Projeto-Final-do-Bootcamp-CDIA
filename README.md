@@ -104,8 +104,8 @@ A solução aplica técnicas de **pré-processamento, análise exploratória de 
 - **Outliers** detectados em variáveis de temperatura, velocidade rotacional e torque  
 
 ### Distribuição das Features Numéricas
-![Distribuição das Variáveis](<img width="1494" height="990" alt="image" src="https://github.com/user-attachments/assets/c78f282a-e8dc-4770-bfbe-05b2314a8b3c" />
-)
+![Distribuição das Variáveis]<img width="1494" height="990" alt="download (1)" src="https://github.com/user-attachments/assets/106915fd-a516-481a-9cf9-a4461d59cf4e" />
+
 
 ### Correlação entre Variáveis
 ![Matriz de Correlação]<img width="1366" height="663" alt="imagensmatriz_correlacao" src="https://github.com/user-attachments/assets/bf98be17-69a9-4e4d-90be-2ac3dfdf50a7" />
