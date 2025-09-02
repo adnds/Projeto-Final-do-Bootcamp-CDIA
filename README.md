@@ -1,32 +1,36 @@
-# Projeto-Final-do-Bootcamp-CDIA
+# 🔧 Sistema de Manutenção Preditiva para Máquinas Industriais  
+**Projeto Final do Bootcamp CDIA**  
 
-# 🔧 Sistema de Manutenção Preditiva para Máquinas Industriais
-
-## 📋 Descrição do Projeto
+## 📋 Descrição do Projeto  
 Este projeto implementa um sistema inteligente de **manutenção preditiva** utilizando dados de sensores IoT para prever diferentes tipos de falhas em máquinas industriais.  
-A solução aplica técnicas de **pré-processamento, análise exploratória de dados (EDA)** e **modelagem de Machine Learning** com múltiplos algoritmos para classificar falhas específicas.
+
+A solução envolve:  
+- **Análise Exploratória de Dados (EDA)**  
+- **Pré-processamento** (limpeza, imputação, normalização e codificação)  
+- **Modelagem de Machine Learning** com múltiplos algoritmos  
+- **Avaliação comparativa de desempenho**  
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivos  
 - Identificar padrões em sensores industriais que indicam possíveis falhas.  
-- Prever falhas múltiplas em equipamentos de forma simultânea.  
-- Reduzir tempo de inatividade e custos de manutenção com técnicas preditivas.  
+- Prever **falhas múltiplas** de forma simultânea.  
+- Reduzir **tempo de inatividade** e **custos de manutenção**.  
 
 ---
 
-## 📊 Dataset
-- Fonte: `bootcamp_train.csv`
-- Registros: **35.260 amostras**  
-- Features: **15 colunas** (sensores, parâmetros operacionais e falhas).  
-- Targets (falhas a serem previstas):
-  - **FDF** – Falha por Desgaste da Ferramenta  
-  - **FDC** – Falha por Dissipação de Calor  
-  - **FP** – Falha por Potência  
-  - **FTE** – Falha por Tensão Excessiva  
-  - **FA** – Falha Aleatória  
+## 📊 Dataset  
+- **Fonte:** `bootcamp_train.csv`  
+- **Registros:** 35.260 amostras  
+- **Features:** 15 variáveis (sensores, parâmetros operacionais e falhas)  
+- **Targets (falhas a serem previstas):**  
+  - `FDF` – Falha por Desgaste da Ferramenta  
+  - `FDC` – Falha por Dissipação de Calor  
+  - `FP` – Falha por Potência  
+  - `FTE` – Falha por Tensão Excessiva  
+  - `FA` – Falha Aleatória  
 
-### Exemplo de Features:
+### Exemplo de Features  
 - `temperatura_ar`  
 - `temperatura_processo`  
 - `umidade_relativa`  
@@ -36,161 +40,111 @@ A solução aplica técnicas de **pré-processamento, análise exploratória de 
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas  
 - **Python 3.x**  
-- **Bibliotecas principais**:
-  - `pandas`, `numpy` – manipulação de dados  
-  - `matplotlib`, `seaborn` – visualização  
-  - `scikit-learn` – modelagem e métricas  
-  - `xgboost`, `lightgbm`, `catboost` – modelos de boosting  
-  - `imblearn` – técnicas de balanceamento (SMOTE, undersampling)  
+- **Bibliotecas:**  
+  - `pandas`, `numpy` → manipulação de dados  
+  - `matplotlib`, `seaborn` → visualização  
+  - `scikit-learn` → modelagem e métricas  
+  - `xgboost`, `lightgbm`, `catboost` → algoritmos de boosting  
+  - `imblearn` → técnicas de balanceamento (SMOTE, undersampling)  
 
 ---
 
-## 🔍 Etapas do Projeto
-1. **Análise Exploratória de Dados (EDA)**  
-   - Verificação de nulos, inconsistências e outliers.  
-   - Distribuição e correlação entre variáveis.  
-   - Detecção de desbalanceamento severo das classes.  
+## 🔍 Etapas do Projeto  
+1. **EDA**  
+   - Verificação de nulos e inconsistências.  
+   - Distribuição das variáveis e correlação.  
+   - Análise do desbalanceamento das classes.  
 
 2. **Pré-Processamento**  
-   - Limpeza de valores inconsistentes.  
+   - Limpeza de inconsistências (`sim`, `não`, `0`, `1`, `y` etc.).  
    - Imputação de valores ausentes (mediana/moda).  
-   - Codificação de variáveis categóricas.  
-   - Normalização das features.  
+   - Normalização com **StandardScaler**.  
+   - Codificação da variável categórica `tipo`.  
 
 3. **Divisão dos Dados**  
-   - Treino (80%) e Teste (20%), com estratificação para manter distribuição.  
+   - 80% treino | 20% teste (estratificado).  
 
-4. **Modelagem de Machine Learning**  
-   - Modelos testados:
-     - **Random Forest**  
-     - **Gradient Boosting**  
-     - **XGBoost**  
-     - **LightGBM**  
-     - **CatBoost**  
-   - Utilização de **MultiOutputClassifier** para prever múltiplas falhas.  
+4. **Modelagem**  
+   - Algoritmos avaliados:  
+     - 🌲 Random Forest  
+     - 🌐 Gradient Boosting  
+     - ⚡ XGBoost  
+     - 🔥 LightGBM  
+     - 🐱 CatBoost  
+   - Uso de **MultiOutputClassifier** para prever falhas múltiplas.  
 
 5. **Avaliação**  
-   - Métricas utilizadas:  
-     - Acurácia  
-     - Precisão  
-     - Recall  
-     - F1-Score  
-     - ROC AUC  
-   - Avaliação feita **por classe** e **média das métricas**.  
+   - Métricas: Acurácia, Precisão, Recall, F1-Score e ROC AUC.  
+   - Avaliação **por classe** e **média ponderada**.  
 
 ---
 
-## 📈 Resultados
-- Os modelos apresentaram **alta acurácia geral (>99%)**, mas devido ao **forte desbalanceamento** das classes de falhas, métricas como Recall e F1-Score foram baixas para falhas mais raras.  
-- **XGBoost** e **LightGBM** mostraram desempenho mais robusto em Recall e ROC AUC comparado aos demais.  
-- A detecção de falhas múltiplas foi rara (**0.05% dos casos**).  
+## 📊 Análise Exploratória dos Dados  
+- **Valores nulos:** presentes em variáveis como `temperatura_ar`, `torque`, `desgaste_da_ferramenta`.  
+- **Classes desbalanceadas:** algumas falhas representam **menos de 1% dos dados**.  
+- **Outliers:** encontrados em temperatura, velocidade rotacional e torque.  
+
+### Visualizações  
+- Distribuição das Features Numéricas  
+<img width="1494" height="990" alt="Distribuição das Variáveis" src="https://github.com/user-attachments/assets/106915fd-a516-481a-9cf9-a4461d59cf4e" />  
+
+- Matriz de Correlação  
+<img width="1366" height="663" alt="Matriz de Correlação" src="https://github.com/user-attachments/assets/bf98be17-69a9-4e4d-90be-2ac3dfdf50a7" />  
+
+- Desbalanceamento das Classes  
+<img width="1366" height="663" alt="Desbalanceamento" src="https://github.com/user-attachments/assets/8f5c823e-a2b7-48ac-820a-78b70a903dad" />  
+
+**Percentual de falhas positivas:**  
+- FDF: 0.20%  
+- FDC: 0.63%  
+- FP: 0.36%  
+- FTE: 0.48%  
+- FA: 0.21%  
+
+👉 **Conclusão inicial:** dataset altamente desbalanceado → modelos tendem a alta acurácia e baixo recall.  
 
 ---
 
-## 🚀 Possíveis Melhorias
-- Aplicar **técnicas avançadas de balanceamento** (SMOTE combinado com undersampling).  
-- Realizar **tuning de hiperparâmetros** com GridSearch ou Optuna.  
-- Testar arquiteturas de **Deep Learning (LSTM, Autoencoders)** para séries temporais.  
-- Implementar um **pipeline automatizado** para deploy em ambiente de produção (ex.: Flask, FastAPI).  
+## 🤖 Resultados Obtidos  
 
----
-## 📊 Análise Exploratória dos Dados
+### 🔍 Desempenho Médio por Modelo  
+| Modelo            | Acurácia | Precisão | Recall | F1-Score | ROC AUC |
+|------------------|----------|----------|--------|----------|---------|
+| Random Forest     | 0.9966   | 0.4305   | 0.1671 | 0.2318   | 0.5831  |
+| Gradient Boosting | 0.9963   | 0.3810   | 0.1785 | 0.2423   | 0.5882  |
+| XGBoost           | 0.9966   | 0.5097   | 0.1968 | 0.2722   | 0.5975  |
+| LightGBM          | 0.9963   | 0.4476   | 0.1802 | 0.2502   | 0.5897  |
+| CatBoost          | 0.9964   | 0.4643   | 0.1833 | 0.2562   | 0.5913  |
 
-- **Tamanho do dataset**: 35.260 amostras e 15 colunas  
-- **Valores nulos**: presentes em variáveis numéricas (`temperatura_ar`, `torque`, `desgaste_da_ferramenta`)  
-- **Classes desbalanceadas**: algumas falhas representam **menos de 1% dos dados**  
-- **Outliers** detectados em variáveis de temperatura, velocidade rotacional e torque  
+### 📉 Detalhe do Melhor Modelo (XGBoost)  
+| Falha | Acurácia | Precisão | Recall | F1-Score | ROC AUC |
+|-------|----------|----------|--------|----------|---------|
+| FDF   | 0.998    | 0.500    | 0.014  | 0.027    | 0.507   |
+| FDC   | 0.994    | 0.571    | 0.202  | 0.299    | 0.601   |
+| FP    | 0.997    | 0.667    | 0.044  | 0.083    | 0.522   |
+| FTE   | 0.996    | 0.400    | 0.024  | 0.045    | 0.512   |
+| FA    | 0.998    | 0.500    | 0.005  | 0.010    | 0.502   |
 
-### Distribuição das Features Numéricas
-![Distribuição das Variáveis]<img width="1494" height="990" alt="download (1)" src="https://github.com/user-attachments/assets/106915fd-a516-481a-9cf9-a4461d59cf4e" />
-
-
-### Correlação entre Variáveis
-![Matriz de Correlação]<img width="1366" height="663" alt="imagensmatriz_correlacao" src="https://github.com/user-attachments/assets/bf98be17-69a9-4e4d-90be-2ac3dfdf50a7" />
-
-
-### Desbalanceamento das Classes
-![Desbalanceamento]<img width="1366" height="663" alt="Figure_3" src="https://github.com/user-attachments/assets/8f5c823e-a2b7-48ac-820a-78b70a903dad" />
-
-- FDF: 0.20% positivos  
-- FDC: 0.63% positivos  
-- FP: 0.36% positivos  
-- FTE: 0.48% positivos  
-- FA: 0.21% positivos  
-
-👉 **Conclusão inicial**: dataset altamente desbalanceado → risco de modelos com alta acurácia mas baixo recall para falhas.
+> 🔎 Apesar da alta acurácia, o recall é baixo para classes minoritárias → indicando que falhas raras ainda não são bem detectadas.  
 
 ---
 
-## ⚙️ Pré-processamento
-
-1. Limpeza de inconsistências (`sim`, `não`, `0`, `1`, `y`, etc.)  
-2. Imputação de valores nulos → **mediana** para numéricos  
-3. Normalização com **StandardScaler**  
-4. Codificação da variável categórica `tipo`  
-5. Divisão em **treino (80%)** e **teste (20%)**  
+## 🚀 Possíveis Melhorias  
+- Balanceamento avançado: **SMOTE + undersampling**.  
+- Otimização com **GridSearchCV** ou **Optuna**.  
+- Testar **Deep Learning (LSTM, Autoencoders)** para séries temporais.  
+- Pipeline automatizado para **deploy em produção** (Flask/FastAPI).  
 
 ---
 
-## 🤖 Modelos Avaliados
-
-Foram avaliados os seguintes classificadores em **configuração MultiOutput**:
-
-- 🌲 Random Forest  
-- 🌐 Gradient Boosting  
-- ⚡ XGBoost  
-- 🔥 LightGBM  
-- 🐱 CatBoost  
+## 📌 Conclusões  
+- O projeto mostrou que, embora a acurácia seja altíssima (>99%), isso se deve ao **forte desbalanceamento**.  
+- **XGBoost** foi o algoritmo mais equilibrado, mas ainda com recall baixo para falhas raras.  
+- Futuras melhorias devem focar em **balanceamento das classes** e em **métricas robustas** além da acurácia.  
 
 ---
 
-## 📈 Resultados
-
-### Random Forest
-- Acurácia Média: **0.9966**  
-- Precisão Média: **0.4305**  
-- Recall Médio: **0.1671**  
-- F1-Score Médio: **0.2318**
-
-### Gradient Boosting
-- Acurácia Média: **0.9963**  
-- Precisão Média: **0.3810**  
-- Recall Médio: **0.1785**  
-- F1-Score Médio: **0.2423**
-
-### XGBoost
-- Acurácia Média: **0.9966**  
-- Precisão Média: **0.5097**  
-- Recall Médio: **0.1968**  
-- F1-Score Médio: **0.2722**
-
-### LightGBM
-- Acurácia Média: **0.9963**  
-- Resultados similares ao XGBoost, mas com menor recall em algumas classes  
-
-### CatBoost
-- [Resultados ainda em execução ou a incluir aqui]  
-
----
-
-## 📊 Comparação entre Modelos
-| Modelo            | Acurácia Média | Precisão Média | Recall Médio | F1-Score Médio |
-|-------------------|----------------|----------------|--------------|----------------|
-| Random Forest     | 0.9966         | 0.4305         | 0.1671       | 0.2318         |
-| Gradient Boosting | 0.9963         | 0.3810         | 0.1785       | 0.2423         |
-| XGBoost           | 0.9966         | 0.5097         | 0.1968       | 0.2722         |
-| LightGBM          | 0.9963         | ~0.45          | ~0.18        | ~0.25          |
-| CatBoost          | —              | —              | —            | —              |
-
----
-
-## 📌 Conclusões
-- Apesar da **alta acurácia**, os modelos apresentaram **baixo recall e F1-score** devido ao **forte desbalanceamento das classes**.  
-- **XGBoost** teve o melhor equilíbrio entre precisão e recall.  
-- Recomenda-se aplicar técnicas de **oversampling (SMOTE)** ou **undersampling** para melhorar o desempenho nas classes minoritárias.  
-- Futuras otimizações podem incluir **ajuste de hiperparâmetros via GridSearchCV** e uso de **métricas ponderadas**.
-
-✍️ Autor: Adilson | Projeto Final Bootcamp CDIA
----
+✍️ Autor: **Adilson**  
+📅 Projeto Final – Bootcamp CDIA  
