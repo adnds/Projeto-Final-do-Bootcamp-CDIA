@@ -104,13 +104,15 @@ A solução aplica técnicas de **pré-processamento, análise exploratória de 
 - **Outliers** detectados em variáveis de temperatura, velocidade rotacional e torque  
 
 ### Distribuição das Features Numéricas
-![Distribuição das Variáveis](imagens/distribuicao_variaveis.png)
+![Distribuição das Variáveis](<img width="1494" height="990" alt="image" src="https://github.com/user-attachments/assets/c78f282a-e8dc-4770-bfbe-05b2314a8b3c" />
+)
 
 ### Correlação entre Variáveis
-![Matriz de Correlação](imagens/matriz_correlacao.png)
+![Matriz de Correlação]<img width="1366" height="663" alt="imagensmatriz_correlacao" src="https://github.com/user-attachments/assets/bf98be17-69a9-4e4d-90be-2ac3dfdf50a7" />
+
 
 ### Desbalanceamento das Classes
-![Desbalanceamento](imagens/desbalanceamento_classes.png)
+![Desbalanceamento]<img width="1366" height="663" alt="Figure_3" src="https://github.com/user-attachments/assets/8f5c823e-a2b7-48ac-820a-78b70a903dad" />
 
 - FDF: 0.20% positivos  
 - FDC: 0.63% positivos  
